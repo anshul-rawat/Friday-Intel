@@ -1,16 +1,64 @@
-import React from 'react'
-import "../css/newcase.css"
-import bookmark from "../images/bookmark.svg"
+import React, { createRef } from 'react';
+import "../css/newcase.css";
+import bookmark from "../images/bookmark.svg";
+import {TfiAngleLeft} from "react-icons/tfi";
+import {SlMagnifierAdd, SlMagnifierRemove} from "react-icons/sl";
+import {AiOutlineFullscreen, AiOutlineCamera} from "react-icons/ai"; 
+import {TbHierarchy} from "react-icons/tb"; 
+import {RiBearSmileLine} from "react-icons/ri";
+import {FiDatabase} from "react-icons/fi"; 
+import {MdSecurity} from "react-icons/md";  
+import {SiCockroachlabs} from "react-icons/si"; 
+import {IoIosAddCircleOutline} from "react-icons/io"; 
+import { useState } from 'react';
+// import html2canvas from 'html2canvas';
+import  { useScreenshot } from 'use-react-screenshot';
+
 
 const NewCase = () => {
+    const [open, setOpen] = useState(true);
+    const ref = createRef(null);
+    const[image, takeScreenshot] = useScreenshot();
+
+    const captureImage = () => { 
+        takeScreenshot(ref.current);
+        return(
+            <div>
+                <h1>Hello</h1>
+                <img src={image} alt={'Screenshot'} />
+            </div>
+            
+        )
+    //    html2canvas(document.body).then(canvas => { 
+    //     const imgHeight = canvas.height * canvas.width /canvas.width; 
+    //     const imgData = canvas.toDataURL('img/png'); 
+    //     const pdf = new jsPDF('p', 'mm', 'a4', [canvas.width, 842]);
+    //     pdf.addImage(imgData, 'PNG',0, 0, canvas.width, imgHeight );
+    //     pdf.save('file.pdf'); 
+    //    })
+    }
+    const getFullScreenElement = () =>{
+        return document.fullscreenElement
+        || document.webkitFullscreenElement
+        || document.mozFullscreenElement
+        || document.msFullscreenElement;
+    }
+
+    const fullScreen = () => {
+        if(getFullScreenElement()){
+            document.exitFullscreen(); 
+        } else{
+        document.documentElement.requestFullscreen().catch(console.log); 
+        }
+    }
     return (
         <>
-            <nav className='nav_bar'>
-                <section className='logo_box'>
+            <nav className='nav_bar '>
+                <section className='logo_box flex'>
                     <img src={bookmark} className='logo' alt='logo' />
-                    <div className='case-dashboard'>
-                        <span className='dashboard-title'>Dashboard</span>
-                        <span className='case-no'>Case 1</span>
+                    <div className='case-dashboard flex pt-8 mr-3'>
+                        <div className='dashboard-title text-lg'>Dashboard</div>
+                        <div className='case-no'>/Case 1</div>
                     </div>
                 </section>
                 <section className='notification_btn'>
@@ -185,9 +233,58 @@ const NewCase = () => {
                     </div>
                 </section>
             </nav>
-            )
-            <div>NewCase</div>
+            
+            
+            <section className = "flex gap-6 ">
+                <div className = {`border-r-2 border-slate-800  bg-[#00000] min-h-screen ${open ? "w-72" : "w-16"} duration-500 text-gray-100 px-4`}>
+                    <div className = "py-3 flex justify-end">
+                        <TfiAngleLeft size = {26} className = "cursor-pointer text-slate-800" onClick = {() => setOpen(!open)}/>
+                    </div>
+                    <div className = "mt-4 flex flex-col gap-4 relative">
+                    <div className = {`side-bar whitespace-pre duration-300 ${!open && 'opacity-0 translate-x-10 overflow-hidden'}`}>
+                        <a href = "#">item1</a></div>
+                        <div className = {`side-bar whitespace-pre duration-300 ${!open && 'opacity-0 translate-x-10 overflow-hidden'}`}>
+                        <a href = "#">item2</a> </div>
+                        <div className = {`side-bar whitespace-pre duration-300 ${!open && 'opacity-0 translate-x-10 overflow-hidden'}`}>
+                        <a href = "#">item3</a></div>
+                        <div className = {`side-bar whitespace-pre duration-300 ${!open && 'opacity-0 translate-x-10 overflow-hidden'}`}>
+                        <a href = "#">item4</a> </div>
+                        <div className = {`side-bar whitespace-pre duration-300 ${!open && 'opacity-0 translate-x-10 overflow-hidden'}`}>
+                        <a href = "#">item5</a></div>
+                        <div className = {`side-bar whitespace-pre duration-300 ${!open && 'opacity-0 translate-x-10 overflow-hidden'}`}>
+                        <a href = "#">item6</a> </div>
+                        <div className = {`side-bar whitespace-pre duration-300 ${!open && 'opacity-0 translate-x-10 overflow-hidden'}`}>
+                        <a href = "#">item7</a></div>
+                    </div>
+                    
+                </div>
+                <div className = "flex-auto text-x1 text-gray-900 font-semibold">
+                    right section </div>
 
+
+                    <div className = "right-side-panel mt-20 mr-5 flex flex-col h-1/2 border-2 border-slate-800 p-2 rounded-xl cursor-pointer">
+                        <div className = "text-white bg-[#0e0e0e] m-1 p-2 rounded-xl"><AiOutlineFullscreen size = {30} onClick = {fullScreen}/></div>
+                        <div className = "text-white bg-[#0e0e0e] m-1 p-2 rounded-xl"><SlMagnifierAdd size = {30} /> </div>
+                        <div className = "text-white bg-[#0e0e0e] m-1 p-2 rounded-xl"><SlMagnifierRemove size = {30}/></div>
+                        <div className = "text-white bg-[#0e0e0e] m-1 p-2 rounded-xl"><TbHierarchy size = {30}/></div>
+                        <div className = "text-white bg-[#0e0e0e] m-1 p-2 rounded-xl" id = "screenshot"><AiOutlineCamera size = {30} onClick = {captureImage}/>
+                        <div id = "screenshot"></div></div>
+                    </div>
+            </section>
+
+            <footer>
+                <div className = "flex bg-[#0e0e0e] gap-60 border-3 border-slate-400 ">
+                    <div className = "footer-logo p-3"> <img className = "ml-40 " src={require('../components/logo.png')} width = "110px"/> </div>
+                    <ul className = "flex gap-20 text-white p-6 cursor-pointer">
+                        <li> <b className = "left-curve"></b><b className='right-curve'></b>
+                            <RiBearSmileLine size = {26}/></li>
+                        <li><FiDatabase size = {26}/></li>
+                        <li><MdSecurity size = {26}/></li>
+                        <li><SiCockroachlabs size = {26}/></li>
+                        <li><IoIosAddCircleOutline size = {26}/></li>
+                    </ul>
+                </div>
+            </footer>
         </>
     )
 }
