@@ -1,10 +1,8 @@
 import React, { createRef } from 'react';
 import "../css/newcase.css";
+import logo from '../images/logo.png'
 import bookmark from "../images/bookmark.svg";
 import {TfiAngleLeft} from "react-icons/tfi";
-import {SlMagnifierAdd, SlMagnifierRemove} from "react-icons/sl";
-import {AiOutlineFullscreen, AiOutlineCamera} from "react-icons/ai"; 
-import {TbHierarchy} from "react-icons/tb"; 
 import {RiBearSmileLine} from "react-icons/ri";
 import {FiDatabase} from "react-icons/fi"; 
 import {MdSecurity} from "react-icons/md";  
@@ -12,23 +10,23 @@ import {SiCockroachlabs} from "react-icons/si";
 import {IoIosAddCircleOutline} from "react-icons/io"; 
 import { useState } from 'react';
 // import html2canvas from 'html2canvas';
-import  { useScreenshot } from 'use-react-screenshot';
+//import  { useScreenshot } from 'use-react-screenshot';
 
 
 const NewCase = () => {
     const [open, setOpen] = useState(true);
     const ref = createRef(null);
-    const[image, takeScreenshot] = useScreenshot();
+
 
     const captureImage = () => { 
-        takeScreenshot(ref.current);
-        return(
-            <div>
-                <h1>Hello</h1>
-                <img src={image} alt={'Screenshot'} />
-            </div>
+      //  takeScreenshot(ref.current);
+      //  return(
+        //    <div>
+          //      <h1>Hello</h1>
+            //    <img src={image} alt={'Screenshot'} />
+        //    </div>
             
-        )
+       // )
     //    html2canvas(document.body).then(canvas => { 
     //     const imgHeight = canvas.height * canvas.width /canvas.width; 
     //     const imgData = canvas.toDataURL('img/png'); 
@@ -332,7 +330,7 @@ const NewCase = () => {
 
             <footer>
                 <div className = "flex bg-[#0e0e0e] gap-60 border-3 border-slate-400 ">
-                    <div className = "footer-logo p-3"> <img className = "ml-40 " src={require('../components/logo.png')} width = "110px"/> </div>
+                    <div className = "footer-logo p-3"> <img className = "ml-40 " src={logo} width = "110px"/> </div>
                     <ul className = "flex gap-20 text-white p-6 cursor-pointer">
                         <li> <b className = "left-curve"></b><b className='right-curve'></b>
                             <RiBearSmileLine size = {26}/></li>

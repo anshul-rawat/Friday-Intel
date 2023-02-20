@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // import Login from './pages/Login';
 // import Canvastools from './components/Canvastools';
 // import CaseBlog from './pages/CaseBlog';
-// import Home from './pages/Home'
+ import Home from './pages/Home'
 //import ForgetPassword from "./pages/forgetpasswordPage";
  import NewCase from "./pages/NewCase";
 
@@ -18,6 +18,7 @@ function App() {
     <>
      <Router>
       <Routes>
+        <Route exact path = "/" element = {<Home/>}/>
         <Route exact path = "NewCase" element = {< NewCase/>}/>
       </Routes>
      </Router>
