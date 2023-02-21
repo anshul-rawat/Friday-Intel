@@ -58,9 +58,12 @@ const NewCase = () => {
                         <div className='dashboard-title text-lg'>Dashboard</div>
                         <div className='case-no'>/Case 1</div>
                     </div>
+
                 </section>
+
                 <section className='notification_btn'>
                     <div>
+                    
                         <svg width="45" height="49" viewBox="0 0 45 49" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M44.5 25C44.5 38.0096 34.6204 48.5 22.5 48.5C10.3796 48.5 0.5 38.0096 0.5 25C0.5 11.9904 10.3796 1.5 22.5 1.5C34.6204 1.5 44.5 11.9904 44.5 25Z" fill="black" fill-opacity="0.7" stroke="black" />
                             <circle cx="22.5" cy="22.5" r="22" fill="white" stroke="black" />
@@ -231,6 +234,10 @@ const NewCase = () => {
                     </div>
                 </section>
             </nav>
+
+            
+                <p> Friday intel</p>
+        
             
             
             <section className = "flex gap-6 ">
